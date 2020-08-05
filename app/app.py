@@ -3,22 +3,22 @@ import mysql.connector
 import simplejson as json
 from flask import Flask, Response
 
-app= Flask(_name_)
+app = Flask(__name__)
 
 
 def cities_import() -> List[Dict]:
     config = {
-        'user':'root',
-        'password':'root',
-        'host':'db',
-        'port':'3306',
-        'database':'citiesData'
+        'user': 'root',
+        'password': 'root',
+        'host': 'db',
+        'port': '3306',
+        'database': 'citiesData'
     }
     connection = mysql.connector.connect(**config)
     cursor = connection.cursor(dictionary=True)
 
     cursor.execute('SELECT * FROM tblCitiesImport')
-    result= cursor.fetchall()
+    result = cursor.fetchall()
 
     cursor.close()
     connection.close()
@@ -33,5 +33,5 @@ def index() -> str:
     return resp
 
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(host='0.0.0.0')
