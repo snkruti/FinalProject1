@@ -33,5 +33,5 @@ def index() -> str:
     return resp
 
 
-if _name_ == '_main_'
+if _name_ == '_main_':
     app.run(host='0.0.0.0')
